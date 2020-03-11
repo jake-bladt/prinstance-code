@@ -2,17 +2,11 @@ provider "aws" {
 	region = "us-east-1"
 }	
 
-resource "aws_instance" "prinstance_host" {
-	instance_type = "t2.micro"
-	ami           = "ami-07ebfd5b3428b6f4d"
-	key_name      = "tops"
-}
-
 resource "aws_launch_configuration" "prinstance_launch_config" {
 	name = "PR Instance launch configuration"
-	placement_group           = "${aws_placement_group.prinstance_pg.id}"
+	placement_group           = "aws_placement_group.prinstance_pg.id"
 	instance_type             = "t2.medium"
-	ami                       = "ami-07ebfd5b3428b6f4d"
+	image_id                  = "ami-07ebfd5b3428b6f4d"
 	key_name                  = "tops"
 	root_block_device         = [{
 		volume_type  = "gp2"
