@@ -34,5 +34,6 @@ resource "aws_autoscaling_group" "prinstance_asg" {
 	desired_capacity          = 1
 	force_delete              = true
 	launch_configuration      = "${aws_launch_configuration.prinstance_launch_config.name}"
+	vpc_zone_identifier       = ["vpc-0c9238c955c71c371"]
 }
 
